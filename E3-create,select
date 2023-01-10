@@ -1,0 +1,51 @@
+mysql> use sse;
+Database changed
+mysql> create table mentees(regn0 int(10),name varchar(20),dept varchar(4),address varchar(10),fathername varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into mentees values(192011079,"gowtham","cse","erode","moorthi");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mentees values(192011090,"arun","cse","nellore","muthu");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mentees values(192011095,"harish","ece","madurai","kannan");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mentees values(192011080,"harini","ece","tanjore","velu");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mentees values(192211080,"divya","ece","tirupur","ramesh");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select *from mentees;
++-----------+---------+------+---------+------------+
+| regn0     | name    | dept | address | fathername |
++-----------+---------+------+---------+------------+
+| 192011079 | gowtham | cse  | erode   | moorthi    |
+| 192011090 | arun    | cse  | nellore | muthu      |
+| 192011095 | harish  | ece  | madurai | kannan     |
+| 192011080 | harini  | ece  | tanjore | velu       |
+| 192211080 | divya   | ece  | tirupur | ramesh     |
++-----------+---------+------+---------+------------+
+5 rows in set (0.01 sec)
+
+mysql> select name from mentees;
++---------+
+| name    |
++---------+
+| gowtham |
+| arun    |
+| harish  |
+| harini  |
+| divya   |
++---------+
+5 rows in set (0.00 sec)
+
+mysql> select*from mentees where name="harini";
++-----------+--------+------+---------+------------+
+| regn0     | name   | dept | address | fathername |
++-----------+--------+------+---------+------------+
+| 192011080 | harini | ece  | tanjore | velu       |
++-----------+--------+------+---------+------------+
+1 row in set (0.01 sec)
