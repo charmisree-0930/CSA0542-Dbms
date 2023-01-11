@@ -1,0 +1,78 @@
+mysql> use sse;
+Database changed
+mysql> select*from mentees;
++-----------+---------+------+---------+------------+-------+---------+
+| regn0     | name    | dept | address | fathername | marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011079 | gowtham | bme  | erode   | moorthi    |    93 | pdsd    |
+| 192011090 | arun    | cse  | chennai | muthu      |    94 | pom     |
+| 192011080 | harini  | ece  | tanjore | velu       |    98 | ca      |
+| 192211080 | divya   | ece  | tirupur | ramesh     |    98 | ca      |
++-----------+---------+------+---------+------------+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> create view marks_view as select subject,marks from mentees;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select*from marks_view;
++---------+-------+
+| subject | marks |
++---------+-------+
+| pdsd    |    93 |
+| pom     |    94 |
+| ca      |    98 |
+| ca      |    98 |
++---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create index subject on mentees(subject);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from mentees;
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table   | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| mentees |          1 | subject  |            1 | subject     | A         |           4 |     NULL | NULL   | YES  | BTREE      |         |               |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.01 sec)
+
+mysql> create table per(pid int not null auto_increment,name varchar(50),age int(3),primary key(pid));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc per;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| pid   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50) | YES  |     | NULL    |                |
+| age   | int(3)      | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> alter table per auto_increment=100;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into per(name,age) values ("gowtham",40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from per;
++-----+---------+------+
+| pid | name    | age  |
++-----+---------+------+
+| 100 | gowtham |   40 |
++-----+---------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into per(name,age) values ("arun",26);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from per;
++-----+---------+------+
+| pid | name    | age  |
++-----+---------+------+
+| 100 | gowtham |   40 |
+| 101 | arun    |   26 |
++-----+---------+------+
+2 rows in set (0.00 sec)
